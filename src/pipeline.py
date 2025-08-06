@@ -24,7 +24,7 @@ def run_pipeline(input_path: str, output_file: str = "generated_questions.json")
     
     # 3. Question Generation
     print("❓ Generating questions...")
-    qg = QuestionGenerator(api_key="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")
+    qg = QuestionGenerator(api_key="YOUR API KEY")
     start = time.time()
     questions = qg.generate_for_topics(topics, keywords_dict)
     print(f"✅ Generated {len(questions)} questions in {time.time()-start:.1f}s")
@@ -39,7 +39,7 @@ def run_pipeline(input_path: str, output_file: str = "generated_questions.json")
     review_questions(output_file)
 
     # print("✅ Manual review completed. Generating Answer...  ")
-    # ag= ContentGenerator(api_key="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",questions=questions)
+    # ag= ContentGenerator(api_key="your api key",questions=questions)
     # answers = ag.generate_review_materials(questions, style="study_guide")
 
     # print("✅ Answers generated successfully. Saving to file...")
@@ -54,4 +54,5 @@ if __name__ == "__main__":
         sys.exit(1)
     
     output_file = sys.argv[2] if len(sys.argv) > 2 else "generated_questions.json"
+
     run_pipeline(sys.argv[1], output_file)
